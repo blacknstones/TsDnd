@@ -1,6 +1,6 @@
 # TsDnd
 
-A Task board app built with:
+Building a Task board app with:
 - TypeScript 
 - React
 - Node.js
