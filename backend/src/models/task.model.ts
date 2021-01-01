@@ -1,13 +1,7 @@
-import mongoose from 'mongoose';
+import { ITask } from './../types/task';
+import { model, Schema } from 'mongoose';
 
-export interface ITask extends Document {
-    title: string;
-    description: string;
-}
-
-const Schema = mongoose.Schema;
-
-const taskSchema = new Schema({
+const taskSchema: Schema = new Schema({
     title: {
         type: String,
         required: true,
@@ -15,10 +9,13 @@ const taskSchema = new Schema({
     description: {
         type: String,
         required: false,
-    }
-});
+    },
+    status: {
+        type: Boolean,
+        required: true,
+    },
+},
+    { timestamps: true });
 
-const Task = mongoose.model('Task', taskSchema);
-
-export { Task }
+export default model<ITask>('Task',taskSchema);
 
