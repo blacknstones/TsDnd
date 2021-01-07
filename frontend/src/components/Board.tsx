@@ -1,13 +1,25 @@
 import React, { useState } from 'react';
 import { DragDropContext } from 'react-beautiful-dnd';
+import { reorderTasks } from "../reorder";
+import { TaskMap } from "../types";
 
 export default function Board() {
-    const [lists, setLists] = useState({});
-    const [tasks, setTasks] = useState([]);
+   const [taskMap, setTasks] = useState<TaskMap>({
+   });
 
     return (
         <div className="board">
-            <DragDropContext>
+            <DragDropContext
+             onDragEnd={({ destination, source }) => {
+                // // dropped outside the list
+                if (!destination) {
+                  return;
+                }
+        
+                setTasks(reorderTasks(tasks, source, destination));
+              }}
+            >
+                
 
 
                 
