@@ -1,15 +1,17 @@
 import React from "react";
-import { Droppable, Draggable, DroppableProvided } from "react-beautiful-dnd";
+import { Droppable, Draggable } from "react-beautiful-dnd";
+import { Task } from "../types";
+import { TaskCard } from "./TaskCard";
 
 interface Props {
-  tasks: string[];
+  tasks: Task[];
   listId: string;
   listType?: string;
   internalScroll?: boolean;
   isCombineEnabled?: boolean;
 }
 
-export const AuthorList: React.FC<Props> = ({ listId, listType, tasks }) => {
+export const List: React.FC<Props> = ({ listId, listType, tasks }) => {
   return (
     <Droppable
       droppableId={listId}
@@ -19,28 +21,25 @@ export const AuthorList: React.FC<Props> = ({ listId, listType, tasks }) => {
     >
       {(dropProvided) => (
         <div {...dropProvided.droppableProps}>
-          <div>
-            <div>
-              <div style={{ display: "flex" }} ref={dropProvided.innerRef}>
-                {tasks.map((task, index) => (
-                  <Draggable 
-                    key={task} 
-                    draggableId={task} 
-                    index={index}>
-                    {(dragProvided) => (
-                      <div
-                        {...dragProvided.dragHandleProps}
-                        {...dragProvided.draggableProps}
-                        ref={dragProvided.innerRef}
-                      >
-                        <Task task={task}/>
-                      </div>
-                    )}
-                  </Draggable>
-                ))}
-                {dropProvided.placeholder}
-              </div>
-            </div>
+          <div ref={dropProvided.innerRef}>
+            {tasks.map((task, index) => (
+              <Draggable
+                key={task.id}
+                draggableId={task.id.toString()}
+                index={index}
+              >
+                {(dragProvided) => (
+                  <div
+                    {...dragProvided.dragHandleProps}
+                    {...dragProvided.draggableProps}
+                    ref={dragProvided.innerRef}
+                  >
+                    <TaskCard task={task} />
+                  </div>
+                )}
+              </Draggable>
+            ))}
+            {dropProvided.placeholder}
           </div>
         </div>
       )}
