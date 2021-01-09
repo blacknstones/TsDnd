@@ -1,6 +1,7 @@
 export type Task = {
     id: number,
-    content: string,
+    title: string,
+    description: string,
 };
 
 export type TaskMap = {
