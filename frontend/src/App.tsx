@@ -1,8 +1,7 @@
-import React from 'react';
-import './App.css';
-import Board from './components/Board';
+import * as React from 'react';
+import { Board } from './components/Board';
 
-function App() {
+const App = () => {
   return (
     <div className="App">
       <Board/>
