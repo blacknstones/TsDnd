@@ -4,13 +4,15 @@ let database: mongoose.Connection;
 
 export const connect = () => {
     const uri = process.env.DATABASE_URL;
-    
-    mongoose.connect(uri!, {
+
+    const options = {
         useNewUrlParser: true,
         useFindAndModify: true,
         useUnifiedTopology: true,
         useCreateIndex: true
-    });
+    };
+    
+    mongoose.connect(uri!, options);
 
     const database = mongoose.connection;
 
