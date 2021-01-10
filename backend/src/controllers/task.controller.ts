@@ -23,10 +23,52 @@ const createTask = async (req: Request, res: Response) => {
         const newTask: ITask = await task.save();
         const allTasks: ITask[] = await Task.find();
     
-        res.status(201).json({ message: "Task added", task: newTask, tasks: allTasks };
-        
+        res.status(201).json({ message: "Task added", task: newTask, tasks: allTasks });
+
       } catch (error) {
         throw error;
       }
 
 }
+
+const updateTask = async (req: Request, res: Response): Promise<void> => {
+    try {
+      const {
+        params: { id },
+        body,
+      } = req;
+
+      const updateTask: ITask | null = await Task.findByIdAndUpdate(
+        { _id: id },
+        body
+      );
+
+      const allTasks: ITask[] = await Task.find()
+      res.status(200).json({
+        message: "Task updated",
+        task: updateTask,
+        tasks: allTasks,
+      });
+
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  const deleteTask = async (req: Request, res: Response): Promise<void> => {
+    try {
+      const deletedTask: ITask | null = await Task.findByIdAndRemove(
+        req.params.id
+      )
+      const allTasks: ITask[] = await Task.find()
+      res.status(200).json({
+        message: "Todo deleted",
+        task: deletedTask,
+        tasks: allTasks,
+      })
+    } catch (error) {
+      throw error
+    }
+  }
+  
+  export { getTasks, createTask, updateTask, deleteTask };
