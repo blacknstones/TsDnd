@@ -5,11 +5,11 @@ const listSchema: Schema = new Schema({
     title: {
         type: String,
         required: true,
+    },
+    taskOrder: {
+        type: [String],
+        required: true,
     }
-    // status: {
-    //     type: Boolean,
-    //     required: true,
-    // },
 },
     { timestamps: true });
 

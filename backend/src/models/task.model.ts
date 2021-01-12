@@ -10,10 +10,6 @@ const taskSchema: Schema = new Schema({
         type: String,
         required: false,
     },
-    // status: {
-    //     type: Boolean,
-    //     required: true,
-    // },
 },
     { timestamps: true });
 
