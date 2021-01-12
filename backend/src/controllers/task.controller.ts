@@ -23,7 +23,10 @@ const createTask = async (req: Request, res: Response) => {
         const newTask: ITask = await task.save();
         const allTasks: ITask[] = await Task.find();
     
-        res.status(201).json({ message: "Task added", task: newTask, tasks: allTasks });
+        res.status(201).json({ 
+          message: "Task added", 
+          task: newTask, 
+          tasks: allTasks });
 
       } catch (error) {
         throw error;
@@ -43,7 +46,7 @@ const updateTask = async (req: Request, res: Response): Promise<void> => {
         body
       );
 
-      const allTasks: ITask[] = await Task.find()
+      const allTasks: ITask[] = await Task.find();
       res.status(200).json({
         message: "Task updated",
         task: updateTask,
@@ -60,14 +63,15 @@ const updateTask = async (req: Request, res: Response): Promise<void> => {
       const deletedTask: ITask | null = await Task.findByIdAndRemove(
         req.params.id
       )
-      const allTasks: ITask[] = await Task.find()
+      const allTasks: ITask[] = await Task.find();
       res.status(200).json({
         message: "Todo deleted",
         task: deletedTask,
         tasks: allTasks,
-      })
+      });
+
     } catch (error) {
-      throw error
+      throw error;
     }
   }
   
