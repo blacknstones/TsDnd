@@ -4,8 +4,9 @@ import { reorderTasks } from "../reorder";
 import { TaskMap } from "../types";
 import { List } from "./List";
 
-export default function Board() {
-  const [taskMap, setTasks] = useState<TaskMap>({});
+export const Board:React.FC = () => {
+  const [lists, setLists] = useState([]);
+  const [taskMap, setTasks] = useState({});
 
   return (
     <div className="board">
