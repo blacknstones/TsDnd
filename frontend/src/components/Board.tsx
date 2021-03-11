@@ -5,7 +5,7 @@ import { TaskMap } from "../types";
 import { List } from "./List";
 
 export const Board:React.FC = () => {
-  const [lists, setLists] = useState([]);
+  // const [lists, setLists] = useState([]);
   const [taskMap, setTasks] = useState({});
 
   return (
