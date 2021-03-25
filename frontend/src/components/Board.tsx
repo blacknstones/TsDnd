@@ -6,7 +6,7 @@ import { List } from "./List";
 
 export const Board:React.FC = () => {
   // const [lists, setLists] = useState([]);
-  const [taskMap, setTasks] = useState({});
+  const [taskMap, setTasks] = useState<TaskMap>({});
 
   return (
     <div className="board">
