@@ -42,7 +42,7 @@ const updateTask = async (req: Request, res: Response): Promise<void> => {
       body,
     } = req;
 
-    const updateTask: ITask | null = await Task.findByIdAndUpdate(
+    const updatedTask: ITask | null = await Task.findByIdAndUpdate(
       { _id: id },
       body
     );
@@ -50,7 +50,7 @@ const updateTask = async (req: Request, res: Response): Promise<void> => {
     const allTasks: ITask[] = await Task.find();
     res.status(200).json({
       message: "Task updated",
-      task: updateTask,
+      task: updatedTask,
       tasks: allTasks,
     });
 
