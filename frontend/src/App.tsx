@@ -4,6 +4,7 @@ import { Board } from './components/Board';
 const App = () => {
   return (
     <div className="App">
+      <h1>HII</h1>
       <Board/>
     </div>
   );

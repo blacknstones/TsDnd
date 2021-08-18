@@ -1,15 +1,15 @@
-import React, { useState } from "react";
-import { DragDropContext } from "react-beautiful-dnd";
-import { reorderTasks } from "../reorder";
-import { TaskMap } from "../types";
-import { List } from "./List";
+import React, { useState } from 'react';
+import { DragDropContext } from 'react-beautiful-dnd';
+import { reorderTasks } from '../reorder';
+import { TaskMap } from '../types';
+import { List } from './List';
 
-export const Board:React.FC = () => {
+export const Board: React.FC = () => {
   // const [lists, setLists] = useState([]);
-  const [taskMap, setTasks] = useState<TaskMap>({});
+  const [taskMap, setTaskMap] = useState<TaskMap>({});
 
   return (
-    <div className="board">
+    <div className='board'>
       <DragDropContext
         onDragEnd={({ destination, source }) => {
           // // dropped outside the list
@@ -17,20 +17,14 @@ export const Board:React.FC = () => {
             return;
           }
 
-          setTasks(reorderTasks(taskMap, source, destination));
-        }}
-      >
+          setTaskMap(reorderTasks(taskMap, source, destination));
+        }}>
         <div>
-          {Object.entries(taskMap).map((key, value) => (
-            <List 
-                internalScroll 
-                key={key} 
-                listId={key}   
-                listType="CARD" 
-                tasks={value} />
+          {Object.entries(taskMap).map(([key, value]) => (
+            <List key={key} listId={key} listType='CARD' tasks={value} />
           ))}
         </div>
       </DragDropContext>
     </div>
   );
-}
+};
