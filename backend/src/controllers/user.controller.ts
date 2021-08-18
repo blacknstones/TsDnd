@@ -41,7 +41,7 @@ const updateUser = async (req: Request, res: Response): Promise<void> => {
   }
 };
 
-const deleteUser = async (req, res) => {
+const deleteUser = async (req: Request, res: Response) => {
   try {
     const deletedUser = await User.findByIdAndRemove(req.params.id);
 
