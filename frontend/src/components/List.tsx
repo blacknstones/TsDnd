@@ -2,6 +2,7 @@ import React from "react";
 import { Droppable, Draggable } from "react-beautiful-dnd";
 import { Task } from "../types";
 import { TaskCard } from "./TaskCard";
+import { TaskForm} from "./TaskForm";
 
 interface Props {
   tasks: Task[];
@@ -11,7 +12,7 @@ interface Props {
   isCombineEnabled?: boolean;
 }
 
-export const List: React.FC<Props> = ({ listId, listType, tasks }) => {
+export const List = ({ listId, listType, tasks }: Props) => {
   return (
     <Droppable
       droppableId={listId}
@@ -22,6 +23,7 @@ export const List: React.FC<Props> = ({ listId, listType, tasks }) => {
       {(dropProvided) => (
         <div {...dropProvided.droppableProps}>
           <div ref={dropProvided.innerRef}>
+            <TaskForm />
             {tasks.map((task, index) => (
               <Draggable
                 key={task.id}

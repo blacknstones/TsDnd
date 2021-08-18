@@ -1,12 +1,19 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import { DragDropContext } from 'react-beautiful-dnd';
 import { reorderTasks } from '../reorder';
 import { TaskMap } from '../types';
 import { List } from './List';
+import { ListForm } from './ListForm';
 
-export const Board: React.FC = () => {
+export const Board = () => {
   // const [lists, setLists] = useState([]);
   const [taskMap, setTaskMap] = useState<TaskMap>({});
+
+
+  useEffect(() => {
+   axios.get('/lists');
+  }, [])
 
   return (
     <div className='board'>
@@ -25,6 +32,7 @@ export const Board: React.FC = () => {
           ))}
         </div>
       </DragDropContext>
+      <ListForm/>
     </div>
   );
 };
