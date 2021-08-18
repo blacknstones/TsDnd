@@ -66,7 +66,7 @@ const deleteTask = async (req: Request, res: Response): Promise<void> => {
     )
     const allTasks: ITask[] = await Task.find();
     res.status(200).json({
-      message: "Todo deleted",
+      message: "Task deleted",
       task: deletedTask,
       tasks: allTasks,
     });
