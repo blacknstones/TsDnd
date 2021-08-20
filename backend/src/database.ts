@@ -2,7 +2,7 @@ import mongoose from 'mongoose';
 
 let database: mongoose.Connection;
 
-export const connect = () => {
+export const connectDB = () => {
     const uri = process.env.DATABASE_URL;
 
     const options = {
@@ -30,7 +30,7 @@ export const connect = () => {
 
 };
 
-export const disconnect = () => {
+export const disconnectDB = () => {
     if (!database) {
         return;
     }
