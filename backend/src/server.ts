@@ -13,9 +13,9 @@ const port = process.env.PORT || 5000;
 
 server.use(cors());
 server.use(express.json());
+server.use(userRouter);
 server.use(taskRouter);
 server.use(listRouter);
-server.use(userRouter);
 
 connectDB();
 
