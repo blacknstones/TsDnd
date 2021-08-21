@@ -6,11 +6,12 @@ import jwt from 'jsonwebtoken';
 const createUser = async (req: Request, res: Response) => {
   try {
     // READ ABOUT PICK!!
-    const body = req.body as Pick<IUser, 'username' | 'password'>;
+    const { username, email, password } = req.body as IUser;
 
     const user: IUser = new User({
-      username: body.username,
-      password: body.password,
+      username,
+      email,
+      password,
     });
 
     const newUser = await user.save();
@@ -20,7 +21,7 @@ const createUser = async (req: Request, res: Response) => {
     });
   } catch (error) {
     res.status(500).json({
-      message: 'error',
+      message: 'error creating user',
       error: error,
     });
   }
@@ -28,8 +29,8 @@ const createUser = async (req: Request, res: Response) => {
 
 const loginUser = async (req: Request, res: Response): Promise<void> => {
   try {
-    const { username, password } = req.body;
-    const user = await User.findOne({ username });
+    const { email, password } = req.body as Pick<IUser, 'email' | 'password'>;
+    const user = await User.findOne({ email });
 
     if (!user) {
       res.status(404).json('User not found');
@@ -55,7 +56,7 @@ const loginUser = async (req: Request, res: Response): Promise<void> => {
     return;
   } catch (error) {
     res.status(500).json({
-      message: 'error',
+      message: 'error login user',
       error: error,
     });
   }
@@ -77,7 +78,10 @@ const updateUser = async (req: Request, res: Response): Promise<void> => {
       user: updatedUser,
     });
   } catch (error) {
-    throw error;
+    res.status(500).json({
+      message: 'error updating user',
+      error: error,
+    });
   }
 };
 
@@ -90,7 +94,10 @@ const deleteUser = async (req: Request, res: Response) => {
       user: deletedUser,
     });
   } catch (error) {
-    throw error;
+    res.status(500).json({
+      message: 'error deleting user',
+      error: error,
+    });
   }
 };
 
