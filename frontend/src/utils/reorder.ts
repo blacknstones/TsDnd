@@ -1,5 +1,5 @@
 import { DraggableLocation } from "react-beautiful-dnd";
-import { TaskMap } from "./types";
+import { TaskMap } from "../types";
 
 // a little function to help us with reordering the result
 export const reorder = (
