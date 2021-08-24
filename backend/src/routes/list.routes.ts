@@ -5,11 +5,11 @@ const listRouter: Router = Router();
 
 listRouter.get("/lists", getLists);
 
-listRouter.post("/create-list", createList);
+listRouter.post("/lists", createList);
 
-listRouter.put("/update-list/:id", updateList);
+listRouter.put("/lists/:id", updateList);
 
-listRouter.delete("/delete-list/:id", deleteList);
+listRouter.delete("/lists/:id", deleteList);
 
 
 export default listRouter;

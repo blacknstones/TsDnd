@@ -7,8 +7,8 @@ userRouter.post("/register", createUser);
 
 userRouter.post("/login", loginUser);
 
-userRouter.put("/update-user/:id", updateUser);
+userRouter.put("/user/:id", updateUser);
 
-userRouter.delete("/delete-user/:id", deleteUser);
+userRouter.delete("/user/:id", deleteUser);
 
 export default userRouter;
