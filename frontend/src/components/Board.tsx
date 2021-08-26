@@ -7,17 +7,17 @@ import { List } from './List';
 import { ListForm } from './ListForm';
 
 export const Board = () => {
-  // const [lists, setLists] = useState([]);
+  const [lists, setLists] = useState([]);
   const [taskMap, setTaskMap] = useState<TaskMap>({});
 
 
- /*  useEffect(() => {
+  useEffect(() => {
    axios.get('/lists').then(res => {
      setTaskMap({
 
      });
    });
-  }, []) */
+  }, [])
 
   return (
     <div className='board'>

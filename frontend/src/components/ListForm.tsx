@@ -6,7 +6,7 @@ export const ListForm = () => {
 
     const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
-        const response = await axios.post('/create-list', {
+        const response = await axios.post('/lists', {
             title,
             taskOrder: []
         });
