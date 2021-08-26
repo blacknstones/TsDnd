@@ -7,4 +7,8 @@ const Api: AxiosInstance = axios.create({
     baseURL: BASE_URL,
 });
 
+Api.interceptors.request.use((config) => {
+    
+})
+
 export default Api;
