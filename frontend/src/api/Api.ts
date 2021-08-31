@@ -9,8 +9,13 @@ const Api: AxiosInstance = axios.create({
 });
 
 Api.interceptors.request.use((config) => {
+    return({
+        ...config,
+        headers: {}
+    })
+
     
-})
+}, error => Promise.reject(error))
 
 const handleResponse = (response: AxiosResponse) => response.data;
 
