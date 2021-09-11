@@ -19,8 +19,8 @@ Api.interceptors.request.use((config) => {
 
 const handleResponse = (response: AxiosResponse) => response.data;
 
-const requests = {
+/* const requests = {
     get: (url: string) => 
-}
+} */
 
 export default Api; 
