@@ -6,7 +6,7 @@ import { Task } from '../../types';
     id: number,
     title: string,
     description: string
-}; */
+};  */
 
 interface TaskState {
   [key: string]: Task[];

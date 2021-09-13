@@ -1,7 +1,12 @@
 import * as React from 'react';
 import axios from 'axios';
+import {List} from '../types';
 
-export const ListForm = () => {
+type Props = {
+    setLists: (lists: never[]) => void
+}
+
+export const ListForm = ({setLists}: Props) => {
     const [title, setTitle] = React.useState<string>("");
 
     const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
@@ -11,6 +16,8 @@ export const ListForm = () => {
             taskOrder: []
         });
         console.log(response);
+        // todo: replace with redux
+        setLists(response.data.Lists);
     }
 
     return (

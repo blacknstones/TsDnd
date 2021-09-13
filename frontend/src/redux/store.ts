@@ -2,9 +2,9 @@ import { configureStore, ThunkAction, Action } from "@reduxjs/toolkit";
 
 const store = configureStore({
     reducer: {
-        lists: listsReducer,
+   /*      lists: listsReducer,
         tasks: tasksReducer,
-        user: userReducer,
+        user: userReducer, */
     }
 })
 

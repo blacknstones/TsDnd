@@ -9,6 +9,7 @@ export type TaskMap = {
 };
 
 export type List = {
+    id: number,
     title: string,
     taskOrder: [string]
 }

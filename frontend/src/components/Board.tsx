@@ -12,12 +12,10 @@ export const Board = () => {
 
 
   useEffect(() => {
-   axios.get('/lists').then(res => {
-     setTaskMap({
+  console.log(lists);
+  // setTaskMap();
+  }, [lists]);
 
-     });
-   });
-  }, [])
 
   return (
     <div className='board'>
@@ -36,7 +34,7 @@ export const Board = () => {
           ))}
         </div>
       </DragDropContext>
-      <ListForm/>
+      <ListForm setLists={setLists}/>
     </div>
   );
 };
